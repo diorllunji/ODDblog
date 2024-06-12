@@ -16,31 +16,35 @@ const Home = () => {
     useEffect(()=>{
         dispatch(fetchPosts(1));
     });
-
     useEffect(() => {
         // Check if the effect has already been executed and if the current location is the Home page
         if (!initializedRef.current && location.pathname === '/') {
+            // Mark the effect as executed
             initializedRef.current = true;
 
+            // Set an item in local storage to indicate that the initialization has happened
+            localStorage.setItem('pixiInitialized', 'true');
+
+            // Initialize Pixi.js
             const initializePixiApp = async () => {
                 const app = new Application();
                 await app.init({ backgroundAlpha: 0, resizeTo: window });
-                document.body.appendChild(app.canvas);
-                const texture = await Assets.load('https://cdn-icons-png.flaticon.com/512/10290/10290328.png');
-                const bunny = new Sprite(texture);
-                bunny.anchor.set(0.5);
-                bunny.x = app.screen.width / 2;
-                bunny.y = app.screen.height / 2;
-                app.stage.addChild(bunny);
-                bunny.zIndex = -1;
+                document.getElementById('pixifooter').appendChild(app.canvas);
+                const texture = await Assets.load('https://cdn.icon-icons.com/icons2/3251/PNG/512/news_regular_icon_202829.png');
+                const sprite = new Sprite(texture);
+                sprite.anchor.set(0.5);
+                sprite.x = app.screen.width / 2;
+                sprite.y = app.screen.height / 2;
+                app.stage.addChild(sprite);
+                sprite.zIndex = -1;
                 app.ticker.add(() => {
-                    bunny.rotation += 0.01;
+                    sprite.rotation += 0.01;
                 });
             };
 
             initializePixiApp();
         }
-    }, [location]); 
+    }, [location]);
     
 
     return ( 
@@ -61,6 +65,7 @@ const Home = () => {
                 See all posts
             </Link>
         </div>
+        <div className="pixifooter" id="pixifooter"></div>
     </section> 
 
     );
