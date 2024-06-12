@@ -8,7 +8,6 @@ import UpdateProfileModal from "./UpdateProfileModal";
 import { deleteProfile, getUserProfile, uploadProfilePhoto } from "../../redux/apiCalls/profileApiCall";
 import PostItem from "../../components/posts/PostItem";
 import {logoutUser} from "../../redux/apiCalls/authApiCall";
-import {Oval} from "react-loader-spinner";
 
 const Profile = () => {
     const dispatch=useDispatch();

@@ -3,7 +3,7 @@ const {registerUserCtrl,loginUserCtrl, verifyUserAccountCtrl}=require("../contro
 
 
 // /api/auth/register
-router.post("/register",registerUserCtrl);
+router.post("/regjistro",registerUserCtrl);
 
 // /api/auth/login
 router.post("/login",loginUserCtrl);

@@ -59,7 +59,7 @@ const CommentsTable = () => {
                                 <td> {item.text} </td>
                                 <td>
                                     <div className="table-button-group">
-                                        <button onClick={()=>deleteCommentHandler(item._id)}>Delete Comment</button>
+                                        <button onClick={()=>deleteCommentHandler(item?._id)}>Delete Comment</button>
                                     </div>
                                 </td>
                             </tr>
